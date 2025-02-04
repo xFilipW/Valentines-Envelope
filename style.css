@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Syne+Mono&display=swap');
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fcefed;
+}
+
+.envelope-wrapper {
+    position: relative; 
+    width: 280px;
+    height: 380px; 
+}
+
+#envelope {
+    position: relative;
+    z-index: 2;
+    width: 280px;
+    height: 180px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background-color: #e98181;
+    margin: 50px auto;
+    animation: float 3s ease-in-out infinite;
+    cursor: pointer;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.front {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 3;
+}
+
+.flap {
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-bottom: 82px solid transparent;
+    border-top: 98px solid #e98181;
+    transform-origin: top;
+}
+
+.text {
+    position: absolute;
+    font-family: "Delius Swash Caps", serif;
+    font-size: 22px;
+    text-align: center;
+    line-height: 22px;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #003049;
+}
+
+.heart {
+    background-color: #d62828;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    position: relative;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-45deg);
+}
+
+.heart:before,
+.heart:after {
+    content: "";
+    background-color: #d62828;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    position: absolute;
+}
+
+.heart:before {
+    top: -12.5px;
+    left: 0;
+}
+
+.heart:after {
+    left: 12.5px;
+    top: 0;
+}
+
+.pocket {
+    border-left: 140px solid #F8AD9D;
+    border-right: 140px solid #F8AD9D;
+    border-bottom: 90px solid #f5a098;
+    border-top: 90px solid transparent;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.letter {
+    position: relative;
+    background-color: #faf5dc;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 90%;
+    top: 5%;
+    border-radius: 6px;
+    box-shadow: 0 2px 26px rgba(0, 0, 0, .12);
+}
+
+.open .flap {
+    transform: rotateX(180deg);
+    transition: transform 0.4s ease, z-index 0.6s;
+    z-index: 1;
+}
+
+.close .flap {
+    transform: rotateX(0deg);
+    transition: transform 0.4s 0.6s ease, z-index 1s;
+    z-index: 5;
+}
+
+.close .letter {
+    transform: translateY(0px);
+    transition: transform 0.4s ease, z-index 1s;
+    z-index: 1;
+}
+
+.open .letter {
+    transform: translateY(-60px);
+    transition: transform 0.4s 0.6s ease, z-index 0.6s;
+    z-index: 2;
+}
+
+.shadow {
+    position: absolute;
+    width: 280px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.3);
+    top: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: shadow-scale 3s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes shadow-scale {
+    0%, 100% {
+        transform: translateX(-50%) scaleX(0.9);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateX(-50%) scaleX(1.1);
+        opacity: 0.45;
+    }
+}
+
+.hearts {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.flotaingHeart {
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+}
+
+.flotaingHeart:before, .flotaingHeart:after {
+    position: absolute;
+    content: '';
+    left: 50px;
+    top: 0;
+    width: 50px;
+    height: 80px;
+    background: #d62828;
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.flotaingHeart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+.close .flotaingHeart {
+    opacity: 0;
+    animation: none;
+}
+
+.a1 {
+    left: 20%;
+    transform: scale(0.6);
+    opacity: 1;
+    animation: slideUp 4s linear 1, sideSway 2s  ease-in-out 4 alternate;
+    animation-fill-mode: forwards;
+    animation-delay: 0.7s;
+}
+
+.a2 {
+    left: 55%;
+    transform: scale(1);
+    opacity: 1;
+    animation: slideUp 5s linear 1, sideSway 4s  ease-in-out 2 alternate;
+    animation-fill-mode: forwards;
+    animation-delay: 0.7s;
+}
+
+.a3 {
+    left: 10%;
+    transform: scale(0.8);
+    opacity: 1;
+    animation: slideUp 7s linear 1, sideSway 2s  ease-in-out 6 alternate;
+    animation-fill-mode: forwards;
+    animation-delay: 0.7s;
+}
+
+@keyframes slideUp {
+    0% {
+        top: 0;
+        opacity: 1;
+    }
+    100% {
+        top: -600px;
+        display: none;
+    }
+}
+
+@keyframes sideSway {
+    0% {
+        margin-left: 0px;
+    }
+    100% {
+        margin-left: 50px;
+    }
+}
